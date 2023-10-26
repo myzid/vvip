@@ -152,7 +152,7 @@ echo -e " \E[41;1;97m         >>> Install SSH WS <<<         \E[0m$NC"
 echo -e "└─────────────────────────────────────────┘"
 sleep 3
 clear
-wget https://raw.githubusercontent.com/myzid/vvip/main/ssh/ssh-vpn.sh && chmod +x ssh-vpn.sh && ./ssh-vpn.sh
+wget https://raw.githubusercontent.com/myzid/vvip/main/install/ssh-vpn.sh && chmod +x ssh-vpn.sh && ./ssh-vpn.sh
 clear
 wget https://raw.githubusercontent.com/myzid/vvip/main/sshws/insshws.sh && chmod +x insshws.sh && ./insshws.sh
 #install ins-xray
@@ -161,7 +161,7 @@ echo -e " \E[41;1;97m           >>> Install Xray <<<          \E[0m$NC"
 echo -e "└─────────────────────────────────────────┘"
 sleep 3
 clear
-wget https://raw.githubusercontent.com/myzid/vvip/main/xray/ins-xray.sh && chmod +x ins-xray.sh && ./ins-xray.sh
+wget https://raw.githubusercontent.com/myzid/vvip/main/install/ins-xray.sh && chmod +x ins-xray.sh && ./ins-xray.sh
 #install menu
 clear
 echo -e "┌─────────────────────────────────────────┐"
