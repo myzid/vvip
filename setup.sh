@@ -1,7 +1,6 @@
 #!/bin/bash
-dateFromServer=$(curl -v --insecure --silent https://google.com/ 2>&1 | grep Date | sed -e 's/< Date: //')
-biji=`date +"%Y-%m-%d" -d "$dateFromServer"`
-# BOT INFORMATION
+sysctl -w net.ipv6.conf.all.disable_ipv6=1 
+sysctl -w net.ipv6.conf.default.disable_ipv6=1 && apt update 
 date=$(date -R | cut -d " " -f -5)
 IP=$(wget -qO- ipinfo.io/ip);
 domain=$(cat /etc/xray/domain)
@@ -35,21 +34,10 @@ if [[ "$hst" != "$dart" ]]; then
 echo "$localip $(hostname)" >> /etc/hosts
 fi
 
-totet=`uname -r`
-REQUIRED_PKG="linux-headers-$totet"
-PKG_OK=$(dpkg-query -W --showformat='${Status}\n' $REQUIRED_PKG|grep "install ok installed")
-echo Checking for $REQUIRED_PKG: $PKG_OK
-if [ "" = "$PKG_OK" ]; then
-  sleep 2
-  echo -e "[ ${yell}WARNING${NC} ] Try to install ...."
-  echo "No $REQUIRED_PKG. Setting up $REQUIRED_PKG."
-  apt-get --yes install $REQUIRED_PKG
-  sleep 1
+echo
   read -p "[ ${green}NOTES${NC} ] Untuk Melanjutkan Penginstallan Klik Enter ! "
-else
   sleep 1
   echo -e "[ ${green}INFO${NC} ] Oke, Melanjutkan Penginstallan"
-fi
 
 ttet=`uname -r`
 ReqPKG="linux-headers-$ttet"
@@ -115,8 +103,6 @@ apt install wget -y
 apt install curl -y
 apt install git curl -y >/dev/null 2>&1
 apt install python -y >/dev/null 2>&1
-sysctl -w net.ipv6.conf.all.disable_ipv6=1 
-sysctl -w net.ipv6.conf.default.disable_ipv6=1 && apt update 
 apt install -y bzip2 gzip coreutils screen curl unzip
 
 gotop_latest="$(curl -s https://api.github.com/repos/xxxserxxx/gotop/releases | grep tag_name | sed -E 's/.*"v(.*)".*/\1/' | head -n 1)"
