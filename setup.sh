@@ -36,17 +36,8 @@ fi
 
 echo
   read -p "[ ${green}NOTES${NC} ] Untuk Melanjutkan Penginstallan Klik Enter ! "
-  sleep 1
+  sleep 3
   echo -e "[ ${green}INFO${NC} ] Oke, Melanjutkan Penginstallan"
-
-ttet=`uname -r`
-ReqPKG="linux-headers-$ttet"
-if ! dpkg -s $ReqPKG  >/dev/null 2>&1; then
-  rm /root/setup.sh >/dev/null 2>&1 
-  exit
-else
-  clear
-fi
 
 
 secs_to_human() {
