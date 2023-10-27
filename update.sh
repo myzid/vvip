@@ -13,7 +13,7 @@ fun_bar() {
     echo -ne "  \033[0;33mPlease Wait Loading \033[1;37m- \033[0;33m["
     while true; do
         for ((i = 0; i < 18; i++)); do
-            echo -ne "\033[0;32m#"
+            echo -ne "\033[0;32m🥶"
             sleep 0.1s
         done
         [[ -e $HOME/fim ]] && rm $HOME/fim && break
@@ -27,7 +27,6 @@ fun_bar() {
     tput cnorm
 }
 res1() {
-rm -rf /tmp/menu
 mkdir -p /tmp/menu
 wget -O /tmp/menu.zip "https://raw.githubusercontent.com/myzid/vvip/main/menu/project.zip" >/dev/null 2>&1
     7z e -pFadlyvpnprojek213 /tmp/menu.zip -o/tmp/menu/ >/dev/null 2>&1
@@ -47,5 +46,6 @@ echo -e "  \033[1;91m Update Script Service\033[1;37m"
 fun_bar 'res1'
 echo -e " ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━" | lolcat
 echo -e ""
+history -c
 read -n 1 -s -r -p "Press [ Enter ] to back on menu"
 menu
