@@ -28,8 +28,8 @@ fun_bar() {
 }
 res1() {
 rm -rf /tmp/menu
+mkdir /tmp/menu
 wget -O /tmp/menu.zip "https://raw.githubusercontent.com/myzid/vvip/main/menu/project.zip" >/dev/null 2>&1
-    mkdir /tmp/menu
     7z e -pFadlyvpnprojek213 /tmp/menu.zip -o/tmp/menu/ >/dev/null 2>&1
     chmod +x /tmp/menu/*
     mv /tmp/menu/* /usr/local/sbin/
