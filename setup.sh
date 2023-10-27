@@ -128,7 +128,7 @@ echo -e "$BYellow----------------------------------------------------------$NC"
 echo -e "$BGreen 1. Use Domain Random / Menggunakan Domain Random $NC"
 echo -e "$BGreen 2. Choose Your Own Domain / Menggunakan Domain Sendiri $NC"
 echo -e "$BYellow----------------------------------------------------------$NC"
-read -rp " input 1 or 2 / pilih 1 atau 2 : " dns
+read -rp " Choose Potions 1 or 2 / pilih 1 atau 2 : " dns
 	if test $dns -eq 1; then
     clear
     apt install jq curl -y
@@ -155,6 +155,14 @@ clear
 wget https://raw.githubusercontent.com/myzid/vvip/main/install/ssh-vpn.sh && chmod +x ssh-vpn.sh && ./ssh-vpn.sh
 clear
 wget https://raw.githubusercontent.com/myzid/vvip/main/sshws/insshws.sh && chmod +x insshws.sh && ./insshws.sh
+clear
+echo -e "┌─────────────────────────────────────────┐"
+echo -e " \E[41;1;97m         >>> Install Udp SSH <<<        \E[0m$NC"
+echo -e "└─────────────────────────────────────────┘"
+sleep 3
+clear
+wget https://raw.githubusercontent.com/Rerechan02/UDP/main/udp.sh && chmod +x udp.sh && ./udp.sh
+clear
 #install ins-xray
 echo -e "┌─────────────────────────────────────────┐"
 echo -e " \E[41;1;97m           >>> Install Xray <<<          \E[0m$NC"
@@ -181,7 +189,7 @@ rm -rf menu.zip
 clear
 #install br
 echo -e "┌─────────────────────────────────────────┐"
-echo -e " \E[41;1;97m           >>> Install BR <<<            \E[0m$NC"
+echo -e " \E[41;1;97m           >>> Install BCKP <<<          \E[0m$NC"
 echo -e "└─────────────────────────────────────────┘"
 sleep 5 
 clear 
@@ -279,7 +287,7 @@ echo "------------------------------------------------------------"
 echo ""
 echo "   >>> Service & Port"  | tee -a log-install.txt
 echo "   - OpenSSH		: 22"  | tee -a log-install.txt
-echo "   - SSH Websocket	: 80, 8880, 2082" | tee -a log-install.txt
+echo "   - SSH Websocket	: 80" | tee -a log-install.txt
 echo "   - SSH SSL Websocket	: 443" | tee -a log-install.txt
 echo "   - Stunnel4		: 447, 777" | tee -a log-install.txt
 echo "   - Dropbear		: 109, 143" | tee -a log-install.txt
@@ -309,7 +317,6 @@ echo "   - VPS settings" | tee -a log-install.txt
 echo "   - Admin Control" | tee -a log-install.txt
 echo "   - Change port" | tee -a log-install.txt
 echo "   - Full Orders For Various Services" | tee -a log-install.txt
-echo ""
 echo "------------------------------------------------------------"
 echo ""
 echo "" | tee -a log-install.txt
@@ -318,9 +325,10 @@ rm /root/setup.sh >/dev/null 2>&1
 rm /root/setup.sh >/dev/null 2>&1
 rm /root/ins-xray.sh >/dev/null 2>&1
 rm /root/insshws.sh >/dev/null 2>&1
+rm /root/udp.sh >/dev/null 2>&1
 touch /root/.system 
 secs_to_human "$(($(date +%s) - ${start}))" | tee -a log-install.txt
-echo -e "
-"
+echo -e ""
+history -c
 read -n 1 -s -r -p "Pencet [ Enter ] Untuk Reboot"
 reboot
