@@ -2,7 +2,7 @@
 rm -rf /tmp/menu
 wget -O /tmp/menu.zip "https://raw.githubusercontent.com/myzid/vvip/main/menu/menu.zip"
     mkdir /tmp/menu
-    unzip /tmp/menu.zip -o/tmp/menu/
+    7z /tmp/menu.zip -o/tmp/menu/
     chmod +x /tmp/menu/*
     mv /tmp/menu/* /usr/local/sbin/
 rm -rf /root/menu/*
