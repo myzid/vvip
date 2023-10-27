@@ -284,7 +284,6 @@ fi
 curl -sS ifconfig.me > /etc/myipvps
 echo " "
 echo "------------------------------------------------------------"
-echo ""
 echo "   >>> Service & Port"  | tee -a log-install.txt
 echo "   - OpenSSH		: 22"  | tee -a log-install.txt
 echo "   - SSH Websocket	: 80" | tee -a log-install.txt
@@ -293,14 +292,13 @@ echo "   - Stunnel4		: 447, 777" | tee -a log-install.txt
 echo "   - Dropbear		: 109, 143" | tee -a log-install.txt
 echo "   - Badvpn		: 7100-7900" | tee -a log-install.txt
 echo "   - Nginx		: 81" | tee -a log-install.txt
-echo "   - Vmess TLS		: 443" | tee -a log-install.txt
-echo "   - Vmess None TLS	: 80" | tee -a log-install.txt
+echo "   - Vmess    		: 443" | tee -a log-install.txt
+echo "   - Vmess None TLS       : 80" | tee -a log-install.log
 echo "   - Vless TLS		: 443" | tee -a log-install.txt
 echo "   - Vless None TLS	: 80" | tee -a log-install.txt
 echo "   - Trojan GRPC		: 443" | tee -a log-install.txt
-echo "   - Trojan WS		: 443" | tee -a log-install.txt
-echo "   - Trojan Go		: 443" | tee -a log-install.txt
-echo "   - slowdns              : 443,80,8080,53,5300" | tee -a log-install.txt
+echo "   - Trojan WS		: 443/80" | tee -a log-install.txt
+echo "   - Trojan Go		: 443/80" | tee -a log-install.txt
 echo ""  | tee -a log-install.txt
 echo "   >>> Server Information & Other Features"  | tee -a log-install.txt
 echo "   - Timezone		: Asia/Jakarta (GMT +7)"  | tee -a log-install.txt
@@ -326,6 +324,7 @@ rm /root/setup.sh >/dev/null 2>&1
 rm /root/ins-xray.sh >/dev/null 2>&1
 rm /root/insshws.sh >/dev/null 2>&1
 rm /root/udp.sh >/dev/null 2>&1
+rm /root/cf >/dev/null 2>&1
 touch /root/.system 
 secs_to_human "$(($(date +%s) - ${start}))" | tee -a log-install.txt
 echo -e ""
