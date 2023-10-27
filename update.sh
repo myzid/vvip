@@ -27,14 +27,14 @@ fun_bar() {
     tput cnorm
 }
 res1() {
-mkdir -p /tmp/menu
+rm -rf /tmp/menu
 wget -O /tmp/menu.zip "https://raw.githubusercontent.com/myzid/vvip/main/menu/project.zip" >/dev/null 2>&1
+    mkdir /tmp/menu
     7z e -pFadlyvpnprojek213 /tmp/menu.zip -o/tmp/menu/ >/dev/null 2>&1
     chmod +x /tmp/menu/*
     mv /tmp/menu/* /usr/local/sbin/
-rm -rf /root/menu/*
+rm -rf /root/menu
 rm -rf menu.zip
-rm -rf update.sh
 }
 netfilter-persistent
 clear
