@@ -4,14 +4,14 @@ apt install jq curl -y
 rm -rf /root/xray/scdomain
 mkdir -p /root/xray
 clear
-echo
-echo
-echo
+echo ""
+echo ""
+echo ""
 #subsl=$(</dev/urandom tr -dc a-z0-9 | head -c5)
-sub=$(</dev/urandom tr -dc 0-9 | head -c4)
-DOMAIN=rstore-vpn.cloud
-SUB_DOMAIN=vvip-${sub}.rstore-vpn.cloud
-CF_ID=ridwanstoreaws@gmail.com
+sub=$(</dev/urandom tr -dc F-V | head -c3)
+DOMAIN=sgpremium.biz.id
+SUB_DOMAIN=vvip-${sub}.sgpremium.biz.id
+CF_ID=padliapandi459@gmail.com
 CF_KEY=4ecfe9035f4e6e60829e519bd5ee17d66954f
 set -euo pipefail
 IP=$(curl -sS ifconfig.me);
