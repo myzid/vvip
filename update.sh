@@ -13,7 +13,7 @@ fun_bar() {
     echo -ne "  \033[0;33mPlease Wait Loading \033[1;37m- \033[0;33m["
     while true; do
         for ((i = 0; i < 18; i++)); do
-            echo -ne "\033[0;32m🥶"
+            echo -ne "\033[0;32m🧊"
             sleep 0.1s
         done
         [[ -e $HOME/fim ]] && rm $HOME/fim && break
