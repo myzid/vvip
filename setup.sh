@@ -61,6 +61,14 @@ checking_sc() {
 }
 checking_sc
 clear
+curl ipinfo.io/org > /root/.isp
+curl ipinfo.io/city > /root/.city
+curl ipinfo.io/org > /root/.myisp
+curl ipinfo.io/city > /root/.mycity
+curl ifconfig.me > /root/.ip
+curl ipinfo.io/region > /root/.region
+curl ifconfig.me > /root/.myip
+clear
 # USERNAME
 rm -f /usr/bin/user
 username=$(curl ${scriptku} | grep $MYIP | awk '{print $2}')
