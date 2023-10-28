@@ -1,6 +1,4 @@
 #!/bin/bash
-#
-# ==================================================
 
 # initializing var
 export DEBIAN_FRONTEND=noninteractive
@@ -327,5 +325,4 @@ rm -f /root/cert.pem
 rm -f /root/ssh-vpn.sh
 rm -f /root/bbr.sh
 
-# finihsing
 clear
