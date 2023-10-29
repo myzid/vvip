@@ -1,5 +1,8 @@
 #!/bin/bash
-
+clear
+echo ""
+echo ""
+echo -e " Install Udp Custom By FV STORE" | lolcat
 cd
 rm -rf /root/udp
 mkdir -p /root/udp
@@ -20,7 +23,7 @@ chmod 644 /root/udp/config.json
 if [ -z "$1" ]; then
 cat <<EOF > /etc/systemd/system/udp-custom.service
 [Unit]
-Description=UDP Custom by ePro Dev. Team
+Description=UDP Custom by Fvstores
 
 [Service]
 User=root
@@ -36,7 +39,7 @@ EOF
 else
 cat <<EOF > /etc/systemd/system/udp-custom.service
 [Unit]
-Description=UDP Custom by ePro Dev. Team
+Description=UDP Custom by Fvstores
 
 [Service]
 User=root
