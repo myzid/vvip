@@ -155,8 +155,7 @@ touch /etc/v2ray/domain
 touch /etc/xray/scdomain
 touch /etc/v2ray/scdomain
 
-wget -q https://raw.githubusercontent.com/myzid/vvip/main/tools.sh && chmod +x tools.sh && ./tools.sh
-rm -rf tools.sh
+# Install Paket Yg Dibutuhkan
 apt update -y
 apt upgrade -y
 apt dist-upgrade -y
@@ -177,6 +176,29 @@ apt install curl -y
 apt install git curl -y >/dev/null 2>&1
 apt install python -y >/dev/null 2>&1
 apt install -y bzip2 gzip coreutils screen curl unzip
+sudo apt-get autoclean -y >/dev/null 2>&1
+audo apt-get -y --purge removd unscd >/dev/null 2>&1
+sudo apt-get -y --purge remove samba* >/dev/null 2>&1
+sudo apt-get -y --purge remove apache2* >/dev/null 2>&1
+sudo apt-get -y --purge remove bind9* >/dev/null 2>&1
+sudo apt-get -y remove sendmail* >/dev/null 2>&1
+apt autoremove -y >/dev/null 2>&1
+# Install Vnstat
+sudo apt-get -y install vnstat
+/etc/init.d/vnstat restart
+apt -y install libsqlite3-dev
+wget https://humdi.net/vnstat/vnstat-2.6.tar.gz
+tar zxvf vnstat-2.6.tar.gz
+cd vnstat-2.6
+./configure --prefix=/usr --sysconfdir=/etc && make && make install
+cd
+vnstat -u -i $NET
+sed -i 's/Interface "'""eth0""'"/Interface "'""$NET""'"/g' /etc/vnstat.conf
+chown vnstat:vnstat /var/lib/vnstat -R
+systemctl enable vnstat
+/etc/init.d/vnstat restart
+rm -f /root/vnstat-2.6.tar.gz
+rm -rf /root/vnstat-2.6
 
 
 gotop_latest="$(curl -s https://api.github.com/repos/xxxserxxx/gotop/releases | grep tag_name | sed -E 's/.*"v(.*)".*/\1/' | head -n 1)"
