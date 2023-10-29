@@ -8,11 +8,11 @@ echo ""
 echo ""
 echo ""
 #subsl=$(</dev/urandom tr -dc a-z0-9 | head -c5)
-sub=$(</dev/urandom tr -dc F-V | head -c3)
+sub=$(</dev/urandom tr -dc f-v | head -c3)
 DOMAIN=sgpremium.biz.id
 SUB_DOMAIN=vvip-${sub}.sgpremium.biz.id
 CF_ID=padliapandi459@gmail.com
-CF_KEY=4ecfe9035f4e6e60829e519bd5ee17d66954f
+CF_KEY=1a700ef4a22e642f0ea8d43420bb0b1237589
 set -euo pipefail
 IP=$(curl -sS ifconfig.me);
 echo "Updating DNS for ${SUB_DOMAIN}..."
