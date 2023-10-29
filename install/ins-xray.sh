@@ -3,7 +3,7 @@ echo -e "
 "
 date
 echo ""
-domain=$(cat /root/domain)
+domain=$(cat /etc/xray/domain)
 sleep 1
 mkdir -p /etc/xray 
 echo -e "[ ${green}INFO${NC} ] Checking... "
@@ -482,28 +482,10 @@ cat >/etc/nginx/conf.d/xray.conf <<EOF
              listen [::]:8080;
              listen 8880;
              listen [::]:8880;
-             listen 8280;
-             listen [::]:8280;
-             listen 2052;
-             listen [::]:2052;
              listen 2082;
              listen [::]:2082;
-             listen 2086;
-             listen [::]:2086;
-             listen 2095;
-             listen [::]:2095;
              listen 443 ssl http2 reuseport;
              listen [::]:443 http2 reuseport;
-             listen 2096 ssl http2 reuseport;
-             listen [::]:2096 http2 reuseport;
-             listen 8443 ssl http2 reuseport;
-             listen [::]:8443 http2 reuseport;
-             listen 2053 ssl http2 reuseport;
-             listen [::]:2053 http2 reuseport;
-             listen 2083 ssl http2 reuseport;
-             listen [::]:2083 http2 reuseport;
-             listen 2087 ssl http2 reuseport;
-             listen [::]:2087 http2 reuseport;
              server_name $domain;
              ssl_certificate /etc/xray/xray.crt;
              ssl_certificate_key /etc/xray/xray.key;
