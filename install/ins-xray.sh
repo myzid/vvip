@@ -3,7 +3,6 @@ echo -e "
 "
 date
 echo ""
-domain=$(cat /etc/xray/domain)
 sleep 1
 mkdir -p /etc/xray 
 echo -e "[ ${green}INFO${NC} ] Checking... "
@@ -52,7 +51,7 @@ touch /var/log/xray/error2.log
 # / / Ambil Xray Core Version Terbaru
 bash -c "$(curl -L https://github.com/XTLS/Xray-install/raw/main/install-release.sh)" @ install -u www-data --version 1.5.6
 
-
+domain=$(cat /root/domain)
 
 ## crt xray
 systemctl stop nginx
