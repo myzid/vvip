@@ -36,12 +36,11 @@ if [[ "$hst" != "$dart" ]]; then
 echo "$localip $(hostname)" >> /etc/hosts
 fi
 
-ipsaya=$(wget -qO- ipinfo.io/ip)
+# Izin Script
 data_server=$(curl -v --insecure --silent https://google.com/ 2>&1 | grep Date | sed -e 's/< Date: //')
 date_list=$(date +"%Y-%m-%d" -d "$data_server")
-data_ip="https://raw.githubusercontent.com/myzid/izin/main/ip"
 checking_sc() {
-  useexp=$(wget -qO- $data_ip | grep $ipsaya | awk '{print $3}')
+  useexp=$(wget -qO- $scriptku | grep $IPVPS | awk '{print $3}')
   if [[ $date_list < $useexp ]]; then
     echo -ne
   else
@@ -50,7 +49,7 @@ checking_sc() {
     echo -e "\033[1;93m────────────────────────────────────────────\033[0m"
     echo -e ""
     echo -e "            ${RED}PERMISSION DENIED !${NC}"
-    echo -e "   \033[0;33mYour VPS${NC} $ipsaya \033[0;33mHas been Banned${NC}"
+    echo -e "   \033[0;33mYour VPS${NC} $IPVPS \033[0;33mHas been Banned${NC}"
     echo -e "     \033[0;33mBeli Akses Script Tunneling${NC}"
     echo -e "             \033[0;33mContact Admin :${NC}"
     echo -e "      \033[0;36mTelegram${NC} t.me/fv_stores"
@@ -69,13 +68,12 @@ curl ifconfig.me > /root/.ip
 curl ipinfo.io/region > /root/.region
 curl ifconfig.me > /root/.myip
 clear
-# USERNAME
+# USERNAME & EXP
 rm -f /usr/bin/user
-username=$(curl ${scriptku} | grep $MYIP | awk '{print $2}')
-echo "$username" >/usr/bin/user
-# validity
 rm -f /usr/bin/e
+username=$(curl ${scriptku} | grep $MYIP | awk '{print $2}')
 valid=$(curl ${scriptku} | grep $MYIP | awk '{print $3}')
+echo "$username" >/usr/bin/user
 echo "$valid" >/usr/bin/e
 # DETAIL ORDER
 username=$(cat /usr/bin/user)
@@ -96,14 +94,12 @@ datediff() {
 mai="datediff "$Exp" "$DATE""
 
 # Status Expired Or Active 
-Info="(${green}Active${NC})"
-Error="(${RED}ExpiRED${NC})"
 today=`date -d "0 days" +"%Y-%m-%d"`
 Exp1=$(curl ${scriptku} | grep $MYIP | awk '{print $3}')
 if [[ $today < $Exp1 ]]; then
-sts="${Info}"
+sts="(${green}Active${NC})"
 else
-sts="${Error}"
+sts="(${RED}Expired${NC})"
 fi
 clear
 
@@ -115,6 +111,7 @@ ln -fs /usr/share/zoneinfo/Asia/Jakarta /etc/localtime
 sysctl -w net.ipv6.conf.all.disable_ipv6=1 >/dev/null 2>&1
 sysctl -w net.ipv6.conf.default.disable_ipv6=1 >/dev/null 2>&1
 
+# Membuat Dictory 
 mkdir -p /etc/xray
 mkdir -p /etc/v2ray
 mkdir -p /etc/cobek
@@ -200,7 +197,7 @@ systemctl enable vnstat
 rm -f /root/vnstat-2.6.tar.gz
 rm -rf /root/vnstat-2.6
 
-
+# Gotop & Swap
 gotop_latest="$(curl -s https://api.github.com/repos/xxxserxxx/gotop/releases | grep tag_name | sed -E 's/.*"v(.*)".*/\1/' | head -n 1)"
     gotop_link="https://github.com/xxxserxxx/gotop/releases/download/v$gotop_latest/gotop_v"$gotop_latest"_linux_amd64.deb"
     curl -sL "$gotop_link" -o /tmp/gotop.deb
@@ -222,6 +219,7 @@ gotop_latest="$(curl -s https://api.github.com/repos/xxxserxxx/gotop/releases | 
     rm -rf bbr.sh
 
 clear
+# Setup Domain
 echo -e "$green━━━━━━━━━━┏┓━━━━━━━━━━━━━━━━━━━━━━━━┏┓━━━━━━━━━━━$NC"
 echo -e "$green━━━━━━━━━┏┛┗┓━━━━━━━━━━━━━━━━━━━━━━┏┛┗┓━━━━━━━━━━$NC"
 echo -e "$green┏━━┓━┏┓┏┓┗┓┏┛┏━━┓━━━━┏━━┓┏━━┓┏┓┏━┓━┗┓┏┛┏┓┏━┓━┏━━┓$NC"
@@ -267,51 +265,43 @@ read -rp " Choose Potions 1 or 2 / pilih 1 atau 2 : " dns
     URL="https://api.telegram.org/bot$KEY/sendMessage"
     TIMEZONE=$(printf '%(%H:%M:%S)T')
     TEXT="
-<code>────────────────────</code>
-<b>⚡AUTOSCRIPT PREMIUM⚡</b>
-<code>────────────────────</code>
-<code>ID     : </code><code>$username</code>
-<code>Domain : </code><code>$domain</code>
-<code>Date   : </code><code>$tnggl</code>
-<code>Time   : </code><code>$TIMEZONE</code>
-<code>Ip vps : </code><code>$MYIP</code>
-<code>Exp Sc : </code><code>$exp</code>
-<code>────────────────────</code>
-<i>Automatic Notification from Github</i>
-<i>Fvstores</i>
-"'&reply_markup={"inline_keyboard":[[{"text":"ᴏʀᴅᴇʀ🧊","url":"https://t.me/fv_stores"},{"text":"ᴏʀᴅᴇʀ🧊","url":"wa.me/083160098834"}]]}'
+    <code>────────────────────</code>
+    <b>⚡AUTOSCRIPT PREMIUM⚡</b>
+    <code>────────────────────</code>
+    <code>ID     : </code><code>$username</code>
+    <code>Domain : </code><code>$domain</code>
+    <code>Date   : </code><code>$tnggl</code>
+    <code>Time   : </code><code>$TIMEZONE</code>
+    <code>Ip vps : </code><code>$MYIP</code>
+    <code>Exp Sc : </code><code>$exp</code>
+    <code>────────────────────</code>
+    <i>Automatic Notification from Github</i>
+    "'&reply_markup={"inline_keyboard":[[{"text":"ᴏʀᴅᴇʀ🧊","url":"https://t.me/fv_stores"},{"text":"ᴏʀᴅᴇʀ🧊","url":"wa.me/083160098834"}]]}'
     curl -s --max-time $TIMES -d "chat_id=$CHATID&disable_web_page_preview=1&text=$TEXT&parse_mode=html" $URL >/dev/null
 
 clear 
 #install ssh & ws python
-echo -e "┌─────────────────────────────────────────┐"
-echo -e " \E[41;1;97m         >>> Install SSH WS <<<         \E[0m$NC"
-echo -e "└─────────────────────────────────────────┘"
+echo -e "─────────────────────────────────────────"
+echo -e " \E[41;1;97m            Install SSH WS          \E[0m$NC"
+echo -e "─────────────────────────────────────────"
 sleep 3
 clear
 wget https://raw.githubusercontent.com/myzid/vvip/main/install/ssh-vpn.sh && chmod +x ssh-vpn.sh && ./ssh-vpn.sh
 clear
 wget https://raw.githubusercontent.com/myzid/vvip/main/sshws/insshws.sh && chmod +x insshws.sh && ./insshws.sh
 clear
-echo -e "┌─────────────────────────────────────────┐"
-echo -e " \E[41;1;97m         >>> Install Udp SSH <<<        \E[0m$NC"
-echo -e "└─────────────────────────────────────────┘"
-sleep 3
-clear
-wget https://raw.githubusercontent.com/Rerechan02/UDP/main/udp.sh && chmod +x udp.sh && ./udp.sh
-clear
 #install ins-xray
-echo -e "┌─────────────────────────────────────────┐"
-echo -e " \E[41;1;97m           >>> Install Xray <<<          \E[0m$NC"
-echo -e "└─────────────────────────────────────────┘"
+echo -e "─────────────────────────────────────────"
+echo -e " \E[41;1;97m              Install Xray          \E[0m$NC"
+echo -e "─────────────────────────────────────────"
 sleep 3
 clear
 wget https://raw.githubusercontent.com/myzid/vvip/main/install/ins-xray.sh && chmod +x ins-xray.sh && ./ins-xray.sh
 #install menu
 clear
-echo -e "┌─────────────────────────────────────────┐"
-echo -e " \E[41;1;97m           >>> Install Menu <<<          \E[0m$NC"
-echo -e "└─────────────────────────────────────────┘"
+echo -e "─────────────────────────────────────────"
+echo -e " \E[41;1;97m              Install Menu          \E[0m$NC"
+echo -e "─────────────────────────────────────────"
 sleep 3
 clear
 rm -rf /tmp/menu
@@ -325,9 +315,9 @@ rm -rf /root/menu
 rm -rf menu.zip
 clear
 #install br
-echo -e "┌─────────────────────────────────────────┐"
-echo -e " \E[41;1;97m           >>> Install BCKP <<<          \E[0m$NC"
-echo -e "└─────────────────────────────────────────┘"
+echo -e "─────────────────────────────────────────"
+echo -e " \E[41;1;97m              Install BCKP          \E[0m$NC"
+echo -e "─────────────────────────────────────────"
 sleep 5 
 clear 
 wget https://raw.githubusercontent.com/myzid/vvip/main/backup/set-br.sh && chmod +x set-br.sh && ./set-br.sh
@@ -360,8 +350,7 @@ cd
 chmod +x /usr/bin/acs-set
 
 clear
-echo
-echo -e "${GREEN}Memasang Default Menu${NC}"
+# Default Menu
 sleep 2
 cat > /etc/cron.d/re_otm <<-END
 SHELL=/bin/sh
@@ -400,9 +389,6 @@ clear
 neofetch
 END
 chmod 644 /root/.profile
-echo
-echo -e "${GREEN}Default Menu Berhasil Di Pasang${NC}"
-sleep 2
 clear
 
 service cron restart >/dev/null 2>&1
@@ -427,7 +413,8 @@ else
 gg="AM"
 fi
 curl -sS ifconfig.me > /etc/myipvps
-echo " "
+clear
+echo ""
 echo "------------------------------------------------------------"
 echo "   >>> Service & Port"  | tee -a log-install.txt
 echo "   - OpenSSH		: 22"  | tee -a log-install.txt
@@ -438,12 +425,13 @@ echo "   - Dropbear		: 109, 143" | tee -a log-install.txt
 echo "   - Badvpn		: 7100-7300" | tee -a log-install.txt
 echo "   - Nginx		: 81" | tee -a log-install.txt
 echo "   - Vmess    		: 443" | tee -a log-install.txt
-echo "   - Vmess None TLS       : 80" | tee -a log-install.log
+echo "   - Vmess None TLS       : 80, 8080, 8880, 2082" | tee -a log-install.log
 echo "   - Vless TLS		: 443" | tee -a log-install.txt
-echo "   - Vless None TLS	: 80" | tee -a log-install.txt
+echo "   - Vless None TLS	: 80, 8080, 8880, 2082" | tee -a log-install.txt
 echo "   - Trojan GRPC		: 443" | tee -a log-install.txt
-echo "   - Trojan WS		: 443/80" | tee -a log-install.txt
-echo "   - Trojan Go		: 443/80" | tee -a log-install.txt
+echo "   - Trojan WS TLS	: 443" | tee -a log-install.txt
+echo "   - Trojan WS NTLS	: 80, 8080, 8880, 2082" | tee -a log-install.txt
+echo "   - Trojan Go		: 443" | tee -a log-install.txt
 echo ""  | tee -a log-install.txt
 echo "   >>> Server Information & Other Features"  | tee -a log-install.txt
 echo "   - Timezone		: Asia/Jakarta (GMT +7)"  | tee -a log-install.txt
