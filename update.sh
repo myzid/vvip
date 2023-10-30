@@ -12,7 +12,7 @@ fun_bar() {
     tput civis
     echo -ne "  \033[0;33mPlease Wait Loading \033[1;37m- \033[0;33m["
     while true; do
-        for ((i = 0; i < 18; i++)); do
+        for ((i = 0; i < 17; i++)); do
             echo -ne "\033[0;32m="
             sleep 0.1s
         done
@@ -40,7 +40,7 @@ rm -rf update.sh
 netfilter-persistent
 clear
 echo -e " ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━" | lolcat
-echo -e " \e[1;97;41m              UPDATE SCRIPT               \e[0m"
+echo -e "  \e[1;97;41m             UPDATE SCRIPT              \e[0m"
 echo -e " ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━" | lolcat
 echo -e ""
 echo -e "  \033[1;91m Update Script Service\033[1;37m"
