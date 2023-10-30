@@ -10,6 +10,7 @@ red='\e[1;31m'
 green='\e[1;32m'
 yell='\e[1;33m'
 tyblue='\e[1;36m'
+Blue="\033[1;96"
 NC='\e[0m'
 purple() { echo -e "\\033[35;1m${*}\\033[0m"; }
 tyblue() { echo -e "\\033[36;1m${*}\\033[0m"; }
@@ -49,7 +50,7 @@ checking_sc() {
     echo -e "\033[1;93m────────────────────────────────────────────\033[0m"
     echo -e ""
     echo -e "            ${RED}PERMISSION DENIED !${NC}"
-    echo -e "   \033[0;33mYour VPS${NC} $MYIP \033[0;33mHas been Banned${NC}"
+    echo -e "   \033[0;33mVPS Kamu${NC} $MYIP \033[0;33mTelah Di Banned${NC}"
     echo -e "     \033[0;33mBeli Akses Script Tunneling${NC}"
     echo -e "             \033[0;33mContact Admin :${NC}"
     echo -e "      \033[0;36mTelegram${NC} t.me/fv_stores"
@@ -228,11 +229,11 @@ echo -e "$green┃┗┛┗┓┃┗┛┃━┃┗┓┃┗┛┃━━━━�
 echo -e "$green┗━━━┛┗━━┛━┗━┛┗━━┛━━━━┃┏━┛┗━━┛┗┛┗┛┗┛━┗━┛┗┛┗┛┗┛┗━┓┃$NC"
 echo -e "$green━━━━━━━━━━━━━━━━━━━━━┃┃━━━━━━━━━━━━━━━━━━━━━━┏━┛┃$NC"
 echo -e "$green━━━━━━━━━━━━━━━━━━━━━┗┛━━━━━━━━━━━━━━━━━━━━━━┗━━┛$NC"
-echo -e "$BBlue                     SETUP DOMAIN VPS     $NC"
-echo -e "$BYellow----------------------------------------------------------$NC"
-echo -e "$BGreen 1. Use Domain Random / Menggunakan Domain Random $NC"
-echo -e "$BGreen 2. Choose Your Own Domain / Menggunakan Domain Sendiri $NC"
-echo -e "$BYellow----------------------------------------------------------$NC"
+echo -e "$Blue                     SETUP DOMAIN VPS     $NC"
+echo -e "$yell----------------------------------------------------------$NC"
+echo -e "$green 1. Use Domain Random / Menggunakan Domain Random $NC"
+echo -e "$green 2. Choose Your Own Domain / Menggunakan Domain Sendiri $NC"
+echo -e "$yell----------------------------------------------------------$NC"
 read -rp " Choose Potions 1 or 2 / pilih 1 atau 2 : " dns
 	if test $dns -eq 1; then
     clear
