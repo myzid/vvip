@@ -2,7 +2,8 @@
 clear
 echo ""
 echo ""
-echo -e " Install Udp Custom By FV STORE" | lolcat
+echo -e "Install Udp Custom By FV STORE" | lolcat
+sleep 2
 cd
 rm -rf /root/udp
 mkdir -p /root/udp
@@ -62,3 +63,6 @@ systemctl enable udp-custom &>/dev/null
 
 echo restart service udp-custom
 systemctl restart udp-custom &>/dev/null
+
+echo restart service udp-custom
+systemctl restart udp.service &>/dev/null
