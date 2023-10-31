@@ -493,8 +493,6 @@ cat >/etc/nginx/conf.d/xray.conf <<EOF
              listen [::]:443 http2;
              listen 2053 ssl http2;
              listen [::]:2053 http2;
-             listen 2087 ssl http2;
-             listen [::]:2087 http2;
              listen 2083 ssl http2;
              listen [::]:2083 http2;
              listen 2096 ssl http2;
