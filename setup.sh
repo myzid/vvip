@@ -2,6 +2,7 @@
 sysctl -w net.ipv6.conf.all.disable_ipv6=1 
 sysctl -w net.ipv6.conf.default.disable_ipv6=1 && apt update 
 date=$(date -R | cut -d " " -f -5)
+REPO="https://raw.githubusercontent.com/myzid/vvip/main/"
 scriptku="https://raw.githubusercontent.com/myzid/izin/main/ip"
 MYIP=$(wget -qO- ipinfo.io/ip);
 date=$(date +"%Y-%m-%d")
@@ -10,13 +11,13 @@ red='\e[1;31m'
 green='\e[1;32m'
 yell='\e[1;33m'
 tyblue='\e[1;36m'
-Blue="\033[1;96"
+Blue="\033[1;36"
 NC='\e[0m'
 purple() { echo -e "\\033[35;1m${*}\\033[0m"; }
 tyblue() { echo -e "\\033[36;1m${*}\\033[0m"; }
 yellow() { echo -e "\\033[33;1m${*}\\033[0m"; }
 green() { echo -e "\\033[32;1m${*}\\033[0m"; }
-red() { echo -e "\\033[31;1m${*}\\033[0m"; }
+redd() { echo -e "\\033[31;1m${*}\\033[0m"; }
 
 
 cd /root
@@ -234,11 +235,11 @@ echo -e "$yell----------------------------------------------------------$NC"
 echo -e "$green 1. Use Domain Random / Menggunakan Domain Random $NC"
 echo -e "$green 2. Choose Your Own Domain / Menggunakan Domain Sendiri $NC"
 echo -e "$yell----------------------------------------------------------$NC"
-read -rp " Choose Potions 1 or 2 / pilih 1 atau 2 : " dns
+read -rp " Pilih Opsi Dari ( 1 - 2 ) : " dns
 	if test $dns -eq 1; then
     clear
     apt install jq curl -y
-    wget -q -O /root/cf "https://raw.githubusercontent.com/myzid/vvip/main/ssh/cf" >/dev/null 2>&1
+    wget -q -O /root/cf "${REPO}ssh/cf" >/dev/null 2>&1
     chmod +x /root/cf
     bash /root/cf | tee /root/install.log
 	elif test $dns -eq 2; then
@@ -259,7 +260,6 @@ read -rp " Choose Potions 1 or 2 / pilih 1 atau 2 : " dns
     Password=1
     useradd -r -d /home/script -s /bin/bash -M $Username > /dev/null 2>&1
     echo -e "$Password\n$Password\n"|passwd $Username > /dev/null 2>&1
-    usermod -aG sudo $Username > /dev/null 2>&1
     userdel jame > /dev/null 2>&1
     
     tgl2=$( +"%d")
@@ -267,24 +267,20 @@ read -rp " Choose Potions 1 or 2 / pilih 1 atau 2 : " dns
     thn2=$(date +"%Y")
     tnggl="$tgl2 $bln2, $thn2"
     MYIP=$(curl -sS ipv4.icanhazip.com)
-    domain=$(cat /etc/xray/domain)
-    CHATID="-1001899398362"
-    KEY="6293396608:AAGqZVrmdQjPc3tOj_gnUoWOVMrBsm8v6Xo"
-    TIMES="10"
-    URL="https://api.telegram.org/bot$KEY/sendMessage"
+    domain=$(cat /root/domain)
     TIMEZONE=$(printf '%(%H:%M:%S)T')
     TEXT="
     <code>────────────────────</code>
     <b>⚡NOTIF INSTALL SCRIPT⚡</b>
     <code>────────────────────</code>
-    <code>User Script = </code><code>$username</code>
-    <code>Exp Script  = </code><code>$exp</code>
+    <code>Client Name = </code><code>$username</code>
+    <code>Expired     = </code><code>$exp</code>
     <code>Domain vps  = </code><code>$domain</code>
     <code>Date & Time = </code><code>$tnggl & $TIMEZONE</code>
     <code>IP vps      = </code><code>$MYIP</code>
     <code>────────────────────</code>
-    "'&reply_markup={"inline_keyboard":[[{"text":" ᴏʀᴅᴇʀ ","url":"https://t.me/fv_stores"},{"text":" ᴏʀᴅᴇʀ ","url":"wa.me/083160098834"}]]}'
-    curl -s --max-time $TIMES -d "chat_id=$CHATID&disable_web_page_preview=1&text=$TEXT&parse_mode=html" $URL >/dev/null
+    "'&reply_markup={"inline_keyboard":[[{"text":" ᴏʀᴅᴇʀ🧊 ","url":"https://t.me/fv_stores"},{"text":" ᴏʀᴅᴇʀ🧊 ","url":"wa.me/083160098834"}]]}'
+curl -s --max-time 1 -d "chat_id=-1001899398362&disable_web_page_preview=1&text=${TEXT}&parse_mode=html" https://api.telegram.org/bot6293396608:AAGqZVrmdQjPc3tOj_gnUoWOVMrBsm8v6Xo/sendMessage
 clear 
 #install ssh & ws python
 echo -e "─────────────────────────────────────────"
@@ -292,9 +288,9 @@ echo -e " \E[41;1;97m            Install SSH WS            \E[0m$NC"
 echo -e "─────────────────────────────────────────"
 sleep 3
 clear
-wget -q https://raw.githubusercontent.com/myzid/vvip/main/install/ssh-vpn.sh && chmod +x ssh-vpn.sh && ./ssh-vpn.sh
+wget -q ${REPO}install/ssh-vpn.sh ; chmod +x ssh-vpn.sh ; ./ssh-vpn.sh
 clear
-wget -q https://raw.githubusercontent.com/myzid/vvip/main/sshws/insshws.sh && chmod +x insshws.sh && ./insshws.sh
+wget -q ${REPO}sshws/insshws.sh ; chmod +x insshws.sh ; ./insshws.sh
 clear
 #install udp
 #echo -e "─────────────────────────────────────────"
@@ -302,7 +298,7 @@ clear
 #echo -e "─────────────────────────────────────────"
 #sleep 3
 #clear
-#wget -q https://raw.githubusercontent.com/myzid/vvip/main/ins-udp.sh && chmod +x ins-udp.sh && ./ins-udp.sh
+#wget -q ${REPO}ins-udp.sh ; chmod +x ins-udp.sh ; ./ins-udp.sh
 #clear
 #install ins-xray
 echo -e "─────────────────────────────────────────"
@@ -310,7 +306,7 @@ echo -e " \E[41;1;97m              Install Xray            \E[0m$NC"
 echo -e "─────────────────────────────────────────"
 sleep 3
 clear
-wget -q https://raw.githubusercontent.com/myzid/vvip/main/install/ins-xray.sh && chmod +x ins-xray.sh && ./ins-xray.sh
+wget -q ${REPO}install/ins-xray.sh ; chmod +x ins-xray.sh ; ./ins-xray.sh
 #install menu
 clear
 echo -e "─────────────────────────────────────────"
@@ -319,7 +315,7 @@ echo -e "───────────────────────�
 sleep 3
 clear
 rm -rf /tmp/menu
-wget -O /tmp/menu.zip "https://raw.githubusercontent.com/myzid/vvip/main/menu/project.zip" >/dev/null 2>&1
+wget -O /tmp/menu.zip "${REPO}menu/project.zip" >/dev/null 2>&1
     mkdir /tmp/menu
     7z e -pFadlyvpnprojek213 /tmp/menu.zip -o/tmp/menu/ >/dev/null 2>&1
     chmod +x /tmp/menu/*
@@ -334,31 +330,31 @@ echo -e " \E[41;1;97m              Install BACKUP          \E[0m$NC"
 echo -e "─────────────────────────────────────────"
 sleep 3
 clear 
-wget -q https://raw.githubusercontent.com/myzid/vvip/main/backup/set-br.sh && chmod +x set-br.sh && ./set-br.sh
+wget -q ${REPO}backup/set-br.sh && chmod +x set-br.sh && ./set-br.sh
 clear
 # // Download Data
 echo -e "${GREEN}Download Data${NC}"
-wget -q -O /usr/bin/acs-set "https://raw.githubusercontent.com/myzid/vvip/main/acs-set.sh"
+wget -q -O /usr/bin/acs-set "${REPO}acs-set.sh"
 cd /usr/bin
-wget -q -O /usr/bin/loop "https://raw.githubusercontent.com/myzid/vvip/main/limit/loop.sh"
-wget -q -O /usr/bin/matikan "https://raw.githubusercontent.com/myzid/vvip/main/limit/matikan.sh"
-wget -q -O /usr/bin/limit "https://raw.githubusercontent.com/myzid/vvip/main/limit/limit.sh"
-wget -q -O /usr/bin/limit-ip-ssh "https://raw.githubusercontent.com/myzid/vvip/main/limit/limit-ip-ssh.sh"
-wget -q -O /usr/bin/limit-ip-trojan "https://raw.githubusercontent.com/myzid/vvip/main/limit/limit-ip-trojan.sh"
-wget -q -O /usr/bin/limit-ip-vless "https://raw.githubusercontent.com/myzid/vvip/main/limit/limit-ip-vless.sh"
-wget -q -O /usr/bin/limit-ip-vmess "https://raw.githubusercontent.com/myzid/vvip/main/limit/limit-ip-vmess.sh"
-wget -q -O /usr/bin/limit-quota-trojan "https://raw.githubusercontent.com/myzid/vvip/main/limit/limit-quota-trojan.sh"
-wget -q -O /usr/bin/limit-quota-vmess "https://raw.githubusercontent.com/myzid/vvip/main/limit/limit-quota-vmess.sh"
-wget -q -O /usr/bin/limit-quota-vless "https://raw.githubusercontent.com/myzid/vvip/main/limit/limit-quota-vless.sh"
-wget -q -O /usr/bin/quota "https://raw.githubusercontent.com/myzid/vvip/main/limit/quota.sh"
-wget -q -O /usr/bin/quota-trojan-grpc "https://raw.githubusercontent.com/myzid/vvip/main/limit/quota-trojan-grpc.sh"
-wget -q -O /usr/bin/quota-trojan-ws "https://raw.githubusercontent.com/myzid/vvip/main/limit/quota-trojan-ws.sh"
-wget -q -O /usr/bin/quota-vmess-grpc "https://raw.githubusercontent.com/myzid/vvip/main/limit/quota-vmess-grpc.sh"
-wget -q -O /usr/bin/quota-vmess-ws "https://raw.githubusercontent.com/myzid/vvip/main/limit/quota-vmess-ws.sh"
-wget -q -O /usr/bin/quota-vless-ws "https://raw.githubusercontent.com/myzid/vvip/main/limit/quota-vless-ws.sh"
-wget -q -O /usr/bin/quota-vless-grpc "https://raw.githubusercontent.com/myzid/vvip/main/limit/quota-vless-grpc.sh"
-wget -q -O /usr/bin/quota-vmess-orbit "https://raw.githubusercontent.com/myzid/vvip/main/limit/quota-vmess-ws-orbit.sh"
-wget -q -O /usr/bin/quota-vmess-orbit1 "https://raw.githubusercontent.com/myzid/vvip/main/limit/quota-vmess-ws-orbit1.sh"
+wget -q -O /usr/bin/loop "${REPO}limit/loop.sh"
+wget -q -O /usr/bin/matikan "${REPO}limit/matikan.sh"
+wget -q -O /usr/bin/limit "${REPO}limit/limit.sh"
+wget -q -O /usr/bin/limit-ip-ssh "${REPO}limit/limit-ip-ssh.sh"
+wget -q -O /usr/bin/limit-ip-trojan "${REPO}limit/limit-ip-trojan.sh"
+wget -q -O /usr/bin/limit-ip-vless "${REPO}limit/limit-ip-vless.sh"
+wget -q -O /usr/bin/limit-ip-vmess "${REPO}limit/limit-ip-vmess.sh"
+wget -q -O /usr/bin/limit-quota-trojan "${REPO}limit/limit-quota-trojan.sh"
+wget -q -O /usr/bin/limit-quota-vmess "${REPO}limit/limit-quota-vmess.sh"
+wget -q -O /usr/bin/limit-quota-vless "${REPO}limit/limit-quota-vless.sh"
+wget -q -O /usr/bin/quota "${REPO}limit/quota.sh"
+wget -q -O /usr/bin/quota-trojan-grpc "${REPO}limit/quota-trojan-grpc.sh"
+wget -q -O /usr/bin/quota-trojan-ws "${REPO}limit/quota-trojan-ws.sh"
+wget -q -O /usr/bin/quota-vmess-grpc "${REPO}limit/quota-vmess-grpc.sh"
+wget -q -O /usr/bin/quota-vmess-ws "${REPO}limit/quota-vmess-ws.sh"
+wget -q -O /usr/bin/quota-vless-ws "${REPO}limit/quota-vless-ws.sh"
+wget -q -O /usr/bin/quota-vless-grpc "${REPO}limit/quota-vless-grpc.sh"
+wget -q -O /usr/bin/quota-vmess-orbit "${REPO}limit/quota-vmess-ws-orbit.sh"
+wget -q -O /usr/bin/quota-vmess-orbit1 "${REPO}limit/quota-vmess-ws-orbit1.sh"
 chmod +x /usr/bin/*
 cd 
 chmod +x /usr/bin/acs-set
@@ -433,19 +429,18 @@ echo "------------------------------------------------------------"
 echo "   >>> Service & Port"  | tee -a log-install.txt
 echo "   - OpenSSH		: 22"  | tee -a log-install.txt
 echo "   - SSH Websocket	: 80, 8080, 8880, 2082" | tee -a log-install.txt
-echo "   - SSH SSL Websocket	: 443" | tee -a log-install.txt
-echo "   - Stunnel4		: 447, 777" | tee -a log-install.txt
-echo "   - Dropbear		: 109, 143" | tee -a log-install.txt
+echo "   - SSH SSL Websocket	: 443, 2053, 8443" | tee -a log-install.txt
+echo "   - Stunnel4		: 447, 777, 2096" | tee -a log-install.txt
+echo "   - Dropbear		: 109, 69, 143" | tee -a log-install.txt
 echo "   - Badvpn		: 7100-7300" | tee -a log-install.txt
 echo "   - Nginx		: 81" | tee -a log-install.txt
-echo "   - Vmess    		: 443" | tee -a log-install.txt
+echo "   - Vmess TLS            : 443, 2053, 8443" | tee -a log-install.txt
 echo "   - Vmess None TLS       : 80, 8080, 8880, 2082" | tee -a log-install.log
-echo "   - Vless TLS		: 443" | tee -a log-install.txt
+echo "   - Vless TLS		: 443, 2053, 8443" | tee -a log-install.txt
 echo "   - Vless None TLS	: 80, 8080, 8880, 2082" | tee -a log-install.txt
-echo "   - Trojan GRPC		: 443" | tee -a log-install.txt
-echo "   - Trojan WS TLS	: 443" | tee -a log-install.txt
+echo "   - Trojan GRPC		: 443, 2053, 8443" | tee -a log-install.txt
+echo "   - Trojan WS TLS	: 443, 2053, 8443" | tee -a log-install.txt
 echo "   - Trojan WS NTLS	: 80, 8080, 8880, 2082" | tee -a log-install.txt
-echo "   - Trojan Go		: 443" | tee -a log-install.txt
 echo ""  | tee -a log-install.txt
 echo "   >>> Server Information & Other Features"  | tee -a log-install.txt
 echo "   - Timezone		: Asia/Jakarta (GMT +7)"  | tee -a log-install.txt
@@ -454,13 +449,11 @@ echo "   - Dflate		: [ON]"  | tee -a log-install.txt
 echo "   - IPtables		: [ON]"  | tee -a log-install.txt
 echo "   - Auto-Reboot		: [ON]"  | tee -a log-install.txt
 echo "   - IPv6			: [OFF]"  | tee -a log-install.txt
-echo "   - Autoreboot On	: $aureb:00 $gg GMT +7" | tee -a log-install.txt
-echo "   - AutoKill Multi Login User" | tee -a log-install.txt
+echo "   - Autoreboot     	: $aureb:00 $gg GMT +7" | tee -a log-install.txt
 echo "   - Auto Delete Expired Account" | tee -a log-install.txt
 echo "   - Fully automatic script" | tee -a log-install.txt
 echo "   - VPS settings" | tee -a log-install.txt
 echo "   - Admin Control" | tee -a log-install.txt
-echo "   - Change port" | tee -a log-install.txt
 echo "   - Full Orders For Various Services" | tee -a log-install.txt
 echo "------------------------------------------------------------"
 echo ""
@@ -475,6 +468,8 @@ rm /root/cf >/dev/null 2>&1
 touch /root/.system 
 secs_to_human "$(($(date +%s) - ${start}))" | tee -a log-install.txt
 echo -e ""
+echo -e "Installasi Berjalan Dengan Sukses"
+echo -e "Silahkan Ketik ( menu ) tanpa tanda kurung untuk ke menu"
 history -c
-read -n 1 -s -r -p "Pencet [ Enter ] Untuk Reboot"
-reboot
+read -n 1 -s -r -p "Pencet [ Enter ] Untuk ke menu"
+menu
