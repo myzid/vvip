@@ -288,7 +288,7 @@ read -rp " Choose Potions 1 or 2 / pilih 1 atau 2 : " dns
 clear 
 #install ssh & ws python
 echo -e "─────────────────────────────────────────"
-echo -e " \E[41;1;97m            Install SSH WS          \E[0m$NC"
+echo -e " \E[41;1;97m            Install SSH WS            \E[0m$NC"
 echo -e "─────────────────────────────────────────"
 sleep 3
 clear
@@ -297,16 +297,16 @@ clear
 wget -q https://raw.githubusercontent.com/myzid/vvip/main/sshws/insshws.sh && chmod +x insshws.sh && ./insshws.sh
 clear
 #install udp
-echo -e "─────────────────────────────────────────"
-echo -e " \E[41;1;97m            Install UDP             \E[0m$NC"
-echo -e "─────────────────────────────────────────"
-sleep 3
-clear
-wget -q https://raw.githubusercontent.com/myzid/vvip/main/ins-udp.sh && chmod +x ins-udp.sh && ./ins-udp.sh
-clear
+#echo -e "─────────────────────────────────────────"
+#echo -e " \E[41;1;97m            Install UDP               \E[0m$NC"
+#echo -e "─────────────────────────────────────────"
+#sleep 3
+#clear
+#wget -q https://raw.githubusercontent.com/myzid/vvip/main/ins-udp.sh && chmod +x ins-udp.sh && ./ins-udp.sh
+#clear
 #install ins-xray
 echo -e "─────────────────────────────────────────"
-echo -e " \E[41;1;97m              Install Xray          \E[0m$NC"
+echo -e " \E[41;1;97m              Install Xray            \E[0m$NC"
 echo -e "─────────────────────────────────────────"
 sleep 3
 clear
@@ -314,7 +314,7 @@ wget -q https://raw.githubusercontent.com/myzid/vvip/main/install/ins-xray.sh &&
 #install menu
 clear
 echo -e "─────────────────────────────────────────"
-echo -e " \E[41;1;97m              Install Menu          \E[0m$NC"
+echo -e " \E[41;1;97m              Install Menu            \E[0m$NC"
 echo -e "─────────────────────────────────────────"
 sleep 3
 clear
@@ -330,7 +330,7 @@ rm -rf menu.zip
 clear
 #install br
 echo -e "─────────────────────────────────────────"
-echo -e " \E[41;1;97m              Install BCKP          \E[0m$NC"
+echo -e " \E[41;1;97m              Install BACKUP          \E[0m$NC"
 echo -e "─────────────────────────────────────────"
 sleep 3
 clear 
