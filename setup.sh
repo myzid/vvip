@@ -288,7 +288,7 @@ echo -e " \E[41;1;97m            Install SSH WS            \E[0m$NC"
 echo -e "─────────────────────────────────────────"
 sleep 3
 clear
-wget -q ${REPO}install/ssh-vpn.sh ; chmod +x ssh-vpn.sh ; ./ssh-vpn.sh
+wget -q ${REPO}install/ins-ssh ; chmod +x ins-ssh ; ./ins-ssh
 clear
 wget -q ${REPO}sshws/insshws.sh ; chmod +x insshws.sh ; ./insshws.sh
 clear
@@ -306,7 +306,7 @@ echo -e " \E[41;1;97m              Install Xray            \E[0m$NC"
 echo -e "─────────────────────────────────────────"
 sleep 3
 clear
-wget -q ${REPO}install/ins-xray.sh ; chmod +x ins-xray.sh ; ./ins-xray.sh
+wget -q ${REPO}install/ins-xray ; chmod +x ins-xray ; ./ins-xray
 #install menu
 clear
 echo -e "─────────────────────────────────────────"
