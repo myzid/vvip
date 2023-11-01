@@ -7,10 +7,10 @@ clear
 echo ""
 echo ""
 echo ""
-#subsl=$(</dev/urandom tr -dc a-z0-9 | head -c5)
-sub=$(</dev/urandom tr -dc a-z0-9 | head -c3)
+#sub=$(</dev/urandom tr -dc a-z0-9 | head -c3)
+read -p "Input Domain Name. Example ( Fvstore221 ): " -e sub
 DOMAIN=sgpremium.biz.id
-SUB_DOMAIN=fv-${sub}.sgpremium.biz.id
+SUB_DOMAIN=${sub}.sgpremium.biz.id
 CF_ID=padliapandi459@gmail.com
 CF_KEY=1a700ef4a22e642f0ea8d43420bb0b1237589
 set -euo pipefail
