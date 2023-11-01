@@ -268,18 +268,18 @@ read -rp " Pilih Opsi Dari ( 1 - 2 ) : " dns
     <code>────────────────────</code>
     <b>⚡NOTIF INSTALL SCRIPT⚡</b>
     <code>────────────────────</code>
-    <code>Client Name = </code><code>$username</code>
-    <code>Expired     = </code><code>$exp</code>
-    <code>Domain vps  = </code><code>$domain</code>
-    <code>Date & Time = </code><code>$tnggl & $TIMEZONE</code>
-    <code>IP vps      = </code><code>$MYIP</code>
+    <code>Client Name : </code><code>$username</code>
+    <code>Expired     : </code><code>$exp</code>
+    <code>Domain vps  : </code><code>$domain</code>
+    <code>Date & Time : </code><code>${tnggl} & ${TIMEZONE}</code>
+    <code>IP vps      : </code><code>$MYIP</code>
     <code>────────────────────</code>
-    "'&reply_markup={"inline_keyboard":[[{"text":" ᴏʀᴅᴇʀ🧊 ","url":"https://t.me/fv_stores"},{"text":" ᴏʀᴅᴇʀ🧊 ","url":"wa.me/083160098834"}]]}'"
+    '&reply_markup={"inline_keyboard":[[{"text":" ᴏʀᴅᴇʀ🧊 ","url":"https://t.me/fv_stores"},{"text":" ᴏʀᴅᴇʀ🧊 ","url":"wa.me/083160098834"}]]}'"
 curl -s --max-time 1 -d "chat_id=-1001899398362&disable_web_page_preview=1&text=${TEXT}&parse_mode=html" https://api.telegram.org/bot6293396608:AAGqZVrmdQjPc3tOj_gnUoWOVMrBsm8v6Xo/sendMessage
 clear 
 #install ssh & ws python
 echo -e "─────────────────────────────────────────"
-echo -e " \E[41;1;97m            Install SSH WS            \E[0m$NC"
+echo -e " \E[41;1;97m            Install SSH WS             \E[0m$NC"
 echo -e "─────────────────────────────────────────"
 sleep 3
 clear
@@ -289,7 +289,7 @@ wget -q ${REPO}sshws/insshws.sh ; chmod +x insshws.sh ; ./insshws.sh
 clear
 #install udp
 #echo -e "─────────────────────────────────────────"
-#echo -e " \E[41;1;97m            Install UDP               \E[0m$NC"
+#echo -e " \E[41;1;97m            Install UDP                \E[0m$NC"
 #echo -e "─────────────────────────────────────────"
 #sleep 3
 #clear
@@ -297,7 +297,7 @@ clear
 #clear
 #install ins-xray
 echo -e "─────────────────────────────────────────"
-echo -e " \E[41;1;97m              Install Xray            \E[0m$NC"
+echo -e " \E[41;1;97m              Install Xray             \E[0m$NC"
 echo -e "─────────────────────────────────────────"
 sleep 3
 clear
@@ -305,7 +305,7 @@ wget -q ${REPO}install/ins-xray ; chmod +x ins-xray ; ./ins-xray
 #install menu
 clear
 echo -e "─────────────────────────────────────────"
-echo -e " \E[41;1;97m              Install Menu            \E[0m$NC"
+echo -e " \E[41;1;97m              Install Menu             \E[0m$NC"
 echo -e "─────────────────────────────────────────"
 sleep 3
 clear
@@ -321,7 +321,7 @@ rm -rf menu.zip
 clear
 #install br
 echo -e "─────────────────────────────────────────"
-echo -e " \E[41;1;97m              Install BACKUP          \E[0m$NC"
+echo -e " \E[41;1;97m              Install BACKUP           \E[0m$NC"
 echo -e "─────────────────────────────────────────"
 sleep 3
 clear 
@@ -433,7 +433,7 @@ echo "   - Vmess TLS            : 443, 2053, 8443" | tee -a log-install.txt
 echo "   - Vmess None TLS       : 80, 8080, 8880, 2082" | tee -a log-install.log
 echo "   - Vless TLS		: 443, 2053, 8443" | tee -a log-install.txt
 echo "   - Vless None TLS	: 80, 8080, 8880, 2082" | tee -a log-install.txt
-echo "   - Trojan GRPC		: 443, 2053, 8443" | tee -a log-install.txt
+echo "   - Trojan GRPC	        : 443, 2053, 8443" | tee -a log-install.txt
 echo "   - Trojan WS TLS	: 443, 2053, 8443" | tee -a log-install.txt
 echo "   - Trojan WS NTLS	: 80, 8080, 8880, 2082" | tee -a log-install.txt
 echo ""  | tee -a log-install.txt
@@ -442,8 +442,8 @@ echo "   - Timezone		: Asia/Jakarta (GMT +7)"  | tee -a log-install.txt
 echo "   - Fail2Ban		: [ON]"  | tee -a log-install.txt
 echo "   - Dflate		: [ON]"  | tee -a log-install.txt
 echo "   - IPtables		: [ON]"  | tee -a log-install.txt
-echo "   - Auto-Reboot		: [ON]"  | tee -a log-install.txt
-echo "   - IPv6			: [OFF]"  | tee -a log-install.txt
+echo "   - Auto-Reboot	        : [ON]"  | tee -a log-install.txt
+echo "   - IPv6		        : [OFF]"  | tee -a log-install.txt
 echo "   - Autoreboot     	: $aureb:00 $gg GMT +7" | tee -a log-install.txt
 echo "   - Auto Delete Expired Account" | tee -a log-install.txt
 echo "   - Fully automatic script" | tee -a log-install.txt
@@ -466,5 +466,4 @@ echo -e ""
 echo -e "Installasi Berjalan Dengan Sukses"
 echo -e "Silahkan Ketik ( menu ) tanpa tanda kurung untuk ke menu"
 history -c
-read -n 1 -s -r -p "Pencet [ Enter ] Untuk ke menu"
-menu
+echo -e ""
