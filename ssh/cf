@@ -8,7 +8,7 @@ echo ""
 echo ""
 echo ""
 #sub=$(</dev/urandom tr -dc a-z0-9 | head -c3)
-read -p "Input Domain Name. Example ( Fvstore221 ): " -e sub
+read -rp "Input Domain Name. Example ( Fvstore221 ): " -e sub
 DOMAIN=sgpremium.biz.id
 SUB_DOMAIN=${sub}.sgpremium.biz.id
 CF_ID=padliapandi459@gmail.com
